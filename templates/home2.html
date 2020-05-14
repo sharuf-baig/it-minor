@@ -1,0 +1,121 @@
+{% extends 'default.html'%}
+{%block title%}
+<link rel="stylesheet" type="text/css" href="../static/home2.css">
+{%endblock%}
+{%block nav%}
+<h2 style="color: white;">Welcome {{user}}</h2>
+	<ul>
+	{% for n in nav %}
+	{% if n=="logout" %}
+		<li><a href="{{url_for('logout')}}">{{n}}</a></li>	
+	{% else %}
+		<li><a href={{"#"+n}}>{{n}}</a></li>
+
+	{%endif%}	
+	{% endfor %}
+	</ul>
+{%endblock%}
+{%block body %}
+<div id="loader"></div>
+<div class="all">
+<div class="container" id="blur">
+	<div class="content">
+		<h2 style="font-size: 5em;">The InfoSite</h2>
+		<button onclick="toggle()">Read More</button>
+	</div>
+</div>
+<div id="popup">
+	<h2>Welcome!! {{user}}</h2>
+	<p>You Could Scroll down to see all that we've got!!!</p>
+<button onclick="toggle()">Close</button>
+</div>
+<h1 class="toph" id="search">Information Available with us</h1>
+<div class="top row justify-content-start">
+	{% for d in data%}	
+	<div class="col-md-4">
+	<div class="card">
+		<img src={{d.imgurl}} class="card-img-top" alt="Card Image">
+		<div class="card-body">
+			<h4 class="card-title">
+				{{d.name}}
+			</h4>
+			<p class="card-text">
+				{{d.desc}}
+			</p>
+			<a class="btn btn-primary" href="{{url_for('main',val=d.table)}}" onclick="loader()">See info</a>
+		</div>
+	</div>
+</div>
+{% endfor %}
+</div>
+<div class="about" id="about">
+	<div class="contentin">
+		<h2>ABOUT US</h2>
+		<p>This is our It minor DBMS project made to help people so that they could easily search all the information in a website rather then refering a hand book during examination and 
+			It is made by Sharuf,Tarun and Giridhar</p>
+	</div>
+</div>
+<div class="footer" id="contact">
+<div class="contain">
+  <div style="text-align:center">
+    <h2>Contact Us</h2>
+    <p>Swing by for a cup of coffee, or leave us a message:</p>
+  </div>
+  <div class="row">
+    <div class="column">
+      <img src="../static/white.jpg" style="width:100%">
+    </div>
+    <div class="column">
+      <form onsubmit="return validateMyForm();">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name.." required="">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name.." required="">
+        <label for="country">Country</label>
+        <select id="country" name="country">
+          <option value="australia">Australia</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+          <option value="India">India</option>
+        </select>
+        <label for="subject">Subject</label>
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px" required=""></textarea>
+        <input type="submit" value="Submit" onclick="send()">
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	function send() {
+		var fname=document.getElementById('fname').value;
+		var lname=document.getElementById('lname').value;
+		var country = document.getElementById('country').value;
+		var subject =document.getElementById('subject').value;
+		if(fname && lname && country&& subject)
+    		window.open("mailto:" + "man84262001@gmail.com" + "?subject=" + fname+" "+lname+" "+country + "&body=" + subject);
+  		else{
+  			alert("Data Not entered completely")
+  		}
+  };
+  function validateMyForm()
+{
+  return false;
+};
+	function loader(){
+				document.querySelector('#loader').style.display="block";
+				document.querySelector('.all').style.display="none";
+				document.querySelector('.footer-distributed').style.display="none";
+				document.querySelector('.sidebar').style.display="none";
+			}
+</script>
+<script type="text/javascript">
+	function toggle() {
+		var blur = document.getElementById('blur')
+		blur.classList.toggle('active')
+		var popup = document.getElementById('popup')
+		popup.classList.toggle('active')		
+	}
+</script>
+{% endblock %}

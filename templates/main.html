@@ -1,0 +1,55 @@
+{% extends "default.html" %}
+{% block title %}
+	<link rel="stylesheet" type="text/css" href="../static/main.css">
+{% endblock%}
+{%block nav%}
+<h2 style="color: white;">Welcome {{user}}</h2>
+	<ul>
+		<li><a href="{{url_for('logout')}}">Logout</a></li>	
+		<li><a href="{{url_for('home')}}">Home</a></li>
+	</ul>
+{%endblock%}
+{% block body %}
+<div id="loader"></div>
+<div class="all">
+	<div class="jumbotron jumbotron-fluid">
+	<div class="row justify-content-center">
+		<div class="col-md-4 justify-content-center">
+			<h1 style="text-align: center;">{{table}}</h1>
+			<form class="d-flex flex-row justify-content-center" action="" method="post">
+				<input type="text" name="{{table}}" placeholder="Enter Your Query" class="m-1 p-2" style="height: 5%">
+				<button type="submit" class="btn btn-danger p-2 m-1" style="height: 5%">search</button>
+			</form>	
+		</div>	
+	</div>
+	</div>
+	<div class="row justify-content-center m-2 section1">		
+		{% for element in elements %}
+			<div class="col-md-4 p-2">
+			<div class="card">
+				{% if table=="Elements"%}
+					<img src="https://images-of-elements.com/s/{{element.name.lower()}}.jpg" class="card-img-top" alt="
+					{{element.name}} not available" style="height: 50vh;width:50%;align-items: center; ">
+				{%else%}
+				<img src="{{element.img_url}}" class="card-img-top" alt="
+					{{element.name}} not available" style="height: 50vh;width:50%;align-items: center; ">
+				{%endif%}	
+					<div class="card-body">
+						<h4 class="card-title">{{element.name}}</h4>
+						<p class="card-text">{{element.inventor}}</p>
+						<a href="{{url_for('model',val=table,name=element.name)}}" class="link" onclick="loader()">More Info</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+<script type="text/javascript">
+	function loader(){
+				document.querySelector('#loader').style.display="block";
+				document.querySelector('.all').style.display="none";
+				document.querySelector('.footer-distributed').style.display="none";
+				document.querySelector('.sidebar').style.display="none";
+			}
+</script>	
+{% endblock%}

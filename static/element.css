@@ -1,0 +1,28 @@
+.section1{
+	margin-left: 50%;
+}
+.elem{
+	align-items: center;
+	justify-content: center;
+}
+.title{
+	margin-left: 40%;
+}
+
+.title1{
+	margin-left: 30%;
+}
+.tit{
+	height: 10em;
+	padding: 5%;
+}
+.alert{
+	align-items: center;
+}
+.toggle{
+	background:rgba(0,255,0,0.2);
+}
+.toggle:before{
+	border-top: 4px hidden #000;
+	border-right: 4px hidden #000;
+}

@@ -1,0 +1,43 @@
+{% extends "default.html" %}
+{% block title %}
+	<title>{{table}}</title>
+	<link rel="stylesheet" type="text/css" href="../../static/default.css">
+	<link rel="stylesheet" type="text/css" href="../../static/element.css">
+{% endblock %}
+{%block nav%}
+<h2 style="color: white;">Welcome {{user}}</h2>
+	<ul>
+		<li><a href="{{url_for('logout')}}">Logout</a></li>	
+		<li><a href="{{url_for('home')}}">Home</a></li>
+	</ul>
+{%endblock%}
+{%block body%}
+<div class="tit jumbotron jumbotron-fluid">
+	<h1 class="title">{{element.name}}</h1>
+</div>
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			{% if table == "Elements"%}
+			<img src="https://images-of-elements.com/s/{{element.name.lower()}}.jpg" style=" height: auto;width:100%;align-items: center; ">
+			{%else%}
+				<img src="{{element.img_url}}" style=" height: 50vh;width:50%;align-items: center; " alt="none">
+			{% endif%}	
+		</div>		
+		<div class="col-md-6">
+			{{summary}}
+		</div>
+	</div>		
+<div class="tit jumbotron jumbotron-fluid"><h3 class="title1">Some Important Properties of {{element.name}}</h3></div>
+	<div class="row section1">		
+		{% for i in element %}
+			{% if i!="img_url" and i!="atomic_number"%}
+			<div class="col-md-4 elem">
+				<div class="alert alert-light">
+				<h4 class="property">{{i|replace("_"," ")|upper}}</h4>
+				<p class="value">{{element[i]}}</p>
+				</div>
+			</div>
+			{%endif%}
+		{% endfor %}
+	</div>
+{% endblock %}

@@ -1,0 +1,214 @@
+*{
+	margin:0;
+	padding: 0;
+	box-sizing:border-box; 
+	scroll-behavior: smooth;
+}
+.container{
+	position: relative;
+	min-width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #fff173;
+	transition: 0.5s;
+	padding: 20px;
+	background-image: url('back.jpg');
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+	filter: blur(20px);
+	pointer-events: none;
+	user-select: none;
+}
+.container .content{
+	position: relative;
+	max-width: 800px;
+}
+.content h2{
+	font-weight: 600;
+	font-size: 300%;
+	margin-bottom: 10%;
+	color: red;
+	transition: 0.5s;
+}
+.content button{
+	margin-left: 30%;
+}
+.content h2:hover{
+	transform: scaleX(1.25);
+}
+@keyframes anim{
+	0%{
+		transform: translateX(-60%);
+	}
+	100%{
+		transform: translateX(25%);
+	}
+}
+
+.content button,#popup button{
+	position: relative;
+	padding: 5px 20px;
+	text-decoration: none;
+	margin-top: 20px;
+	display: inline-block;
+	color: #fff;
+	background: black;
+	opacity: 0.5;
+}
+button:hover{
+	box-shadow: 10px 5px 30px rgba(0,0,0,0.6);
+}
+.container#blur.active{
+	filter: blur(0);
+	pointer-events: auto;
+	user-select: auto;
+}
+#popup{
+	position: absolute;
+	top: 50%;
+	left: 55%;
+	transform: translate(-50%,-50%);
+	width: 60%;
+	padding: 5%;
+	background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+	box-shadow: 0 5px 30px rgba(0,0,0,0.6);
+	background: #fff;
+	visibility: visible;
+	opacity: 1;
+	transition: 0.5s;
+	scroll-behavior: 
+}
+#popup.active{
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.5s;
+
+}
+.top{
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+.toph{
+	margin-left: 30%;
+}
+.card{
+	margin-left: 5%;
+	margin-bottom: 5%;
+	box-shadow: 0 5px 30px rgba(0,0,0,0.6);
+	align-items: center;
+	height: 100%;
+}
+.card img{
+	height: 20em;
+	width: 20em;
+}
+.footer{
+	height: 100vh;
+	min-width: 100vw;
+	background-image: url('white.jpg');
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;	
+}
+.about{
+	background-image: url('bag.jpg');
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+	min-width:100vw; 
+}
+.about .contentin{
+	position: relative;
+	top: 15%;
+	left: 20%;
+	width: 60%;
+	padding: 10%;
+	box-shadow: 0 5px 30px rgba(0,0,0,0.6);
+	background: #fff;
+}
+
+/* Style inputs */
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Style the container/contact section */
+.footer .contain {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+/* Create two columns that float next to eachother */
+.footer .column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+.footer .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .footer .column, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  .footer{
+  	margin-bottom: 70%;
+  }
+}
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 100;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  display: none;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
