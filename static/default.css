@@ -41,7 +41,7 @@
 }
 .sidebar ul{
 	margin: 0;
-	padding: 40px;
+	padding: 5%;
 	transition: 0.5s;
 }
 .sidebar ul li{
@@ -51,7 +51,7 @@
 	position: relative;
 	display: inline-block;
 	color: #fff;
-	font-size: 30px;
+	font-size: 1.5em;
 	text-decoration: none;
 	padding: 0 20px 10px;
 	z-index: 100;
@@ -181,3 +181,16 @@ footer{
 	.footer-distributed .footer-center i{
 		margin-left: 0;
 	}
+}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+ .sidebar .toggle a,p{
+		font-size: 11px;
+	}
+	.toggle li{
+		margin-left: 4px;
+	}
+	.toggle{
+		background: transparent;
+	}
+}

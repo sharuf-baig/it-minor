@@ -144,6 +144,7 @@ img{
 	transition: .5s;
 
 }
+
 .box .inputbox input:valid ~label,
 .box .inputbox input:focus ~label,
 .box .inputbox input:hover ~label{
@@ -241,4 +242,19 @@ img{
 }
 .one{
 	display: none;
+}
+@media only screen and (max-width: 768px) {
+  .box .inputbox input{
+  	font-size: 15px;
+  }
+  .box .title{
+  	font-size: 20px;
+  }
+  .one .box{
+  	left: 15%;
+  	width: 75%;
+  }
+  .pageinfo{
+  	visibility: hidden;
+  }
 }

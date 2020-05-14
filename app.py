@@ -141,16 +141,16 @@ def model(val,name):
 def upload():
     if request.method == 'POST':
         # check if the post request has the file part
-        if allowed_file(request.files ):
-            flash("file extension not supported")
-            print("IN")
+        if 'file' not in request.files:
+            flash("No file part recieved")
             return redirect('/upload')
         file = request.files['file']
+        print(allowed_file(file.filename))
         # if user does not select file, browser also
         # submit an empty part without filename
         if file.filename == '':
             flash("No file selcted")
-            return redirect('upload')
+            return redirect('/upload')
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             path_of_file =os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -158,7 +158,10 @@ def upload():
             predicted = predict(path_of_file)
             flash("our model predicted "+predicted)
             os.remove(path_of_file)
-            return redirect(url_for('model',val='Electronic',name=predicted))  
+            return redirect(url_for('model',val='Electronic',name=predicted))
+        else:
+        	flash("file format not supported")
+        	return redirect('/upload')	      
     elif request.method == 'GET':
     	if session.get('user') is None:
     		return redirect('/')
