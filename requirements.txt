@@ -8,3 +8,4 @@ tensorflow==2.0.0
 Werkzeug==0.16.0
 Wikipedia-API==0.5.4
 flask_sqlalchemy
+gunicorn
