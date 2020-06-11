@@ -9,5 +9,5 @@ after starting the virtual Environment do pip install -r requirement.txt to inst
 then we need to set some environment variable<br>
 set FLASK_DEBUG=1 for development<br>
 and set DATABASE_URL=ulr of your database<br>
-the flask run to run the flask app<br>
+then flask run to run the flask app<br>
 </p>
