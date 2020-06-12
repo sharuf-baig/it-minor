@@ -12,6 +12,7 @@ and set DATABASE_URL=ulr of your database<br>
 then flask run to run the flask app<br>
 </p>
 <p>
+ <h4>mentions</h4>
 we used bootstrap classes for easing the design process and took the email form from w3s school and the pictures in the website is taken from shutterstock and for the ml part we used transfer learning method as we have a very small data set so its better to train from a preleared model.so we did transfer learning using Mobilenet and keras
 </p>
 
